@@ -1,0 +1,739 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Online Programming Course System</title>
+    <link rel="shortcut icon" href="./img/programming.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="./combine.css">
+    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" /> 
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet" />
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-brands/css/uicons-brands.css'>
+  <style>
+    
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;scroll-behavior:smooth}
+    body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial; background:var(--color-background); color:var(--color-dark)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1200px,92%);margin:auto}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.1rem;border-radius:var(--border-radius-2);font-weight:600;border:1px solid transparent;background:var(--color-primary); color:var(--color-white); box-shadow:var(--shadow);}
+    .btn:hover{transform:translateY(-1px);filter:saturate(1.1)}
+    .btn.ghost{background:transparent;color:var(--color-dark);border-color:var(--color-dark-variant)}
+    .btn.ghost:hover{border-color:var(--color-primary)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:.7rem;font-weight:700;letter-spacing:.3px;color:var(--color-primary)}
+    .brand i{font-size:1.4rem;color:var(--color-primary)}
+    .links{display:flex;gap:1.2rem;align-items:center}
+    .links a{padding:.5rem .6rem;border-radius:var(--border-radius-1);color:var(--color-dark-variant)}
+    .links a:hover{color:var(--color-dark);background:var(--color-light)}
+    .mobile-toggle{display:none}
+
+	.cart {
+    position: relative;
+    cursor: pointer;
+  }
+  .cart i {
+    font-size: 1.6rem;
+    color: var(--color-dark-variant);
+  }
+  .cart-count {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    background: var(--color-red);
+    color: white;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 50%;
+  }
+  .cart-dropdown {
+    position: absolute;
+    right: 0;
+    top: 36px;
+    width: 250px;
+    background: var(--color-white);
+    border-radius: var(--border-radius-2);
+    box-shadow: var(--shadow);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 999;
+  }
+  .cart-dropdown.active {
+    display: flex;
+  }
+  .cart-item {
+    padding: 10px;
+    border-bottom: 1px solid var(--color-info-light);
+    font-size: .9rem;
+  }
+  .cart-item:last-child { border-bottom: none; }
+  .empty {font-size: 14px; font-weight: 500; padding: 15px; text-align: center; color: var(--color-dark-variant); }
+	.cart-item {
+  padding: 10px;
+  border-bottom: 1px solid var(--color-info-light);
+  font-size: .9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart-item span { font-size: .8rem; color: var(--color-dark-variant); }
+.cart-item i {
+  cursor: pointer;
+  color: var(--color-red);
+  font-size: 1rem;
+}
+.cart-footer {
+  padding: 10px;
+  text-align: center;
+  border-top: 1px solid var(--color-info-light);
+  background: var(--color-light);
+}
+.cart-footer a {
+  display: inline-block;
+  padding: .6rem 1rem;
+  border-radius: var(--border-radius-1);
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-weight: 600;
+}
+.cart-footer a:hover {
+  filter: brightness(1.1);
+}
+	.up-arrow{
+    color: var(--color-primary);
+
+  }
+
+  .up-arrow-page {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #000;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+}
+
+.up-arrow-page.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.up-arrow {
+  font-size: 24px;
+}
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: var(--color-red);
+  color: white;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.cart-count.bump {
+  transform: scale(1.3);
+  transition: transform 0.2s ease;
+}
+  @media (max-width: 1344px){
+      .Access-links{display: none;}
+    }
+    @media (max-width: 1200px){
+      .song,.signin-txt{display: none;}
+      .top ul li{font-size: 16px;}
+      .brand i{font-size: 2rem;}
+      .Access-links{display: none;}
+    }
+    @media (max-width: 980px){
+      #navBar .logo-txt{display:none;}
+      .song,.signin-txt{display: none;}
+      .top ul li{font-size: 16px;}
+      .Access-links{display: none;}
+      .brand i{font-size: 2rem;}
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr);}
+      .features{grid-template-columns:1fr 1fr}
+      .testimonials{grid-template-columns:1fr 1fr}
+      .foot{grid-template-columns:1fr 1fr}
+    }
+     @media screen and (max-width:820px){
+      #navBar .logo-txt{font-size:16px;}
+     
+    }
+    @media screen and (max-width:768px){
+      #navBar .logo-txt{display: block;}
+      .top ul li{display: none;}
+      .Access-links{display: block;}
+      .quick-menu{display: none;}
+    }
+    @media (max-width: 640px){
+      .Access-links{display: block;}
+      .grid{grid-template-columns:1fr}
+      .features,.testimonials{grid-template-columns:1fr}
+      .links{display:none}
+      .mobile-toggle{display:inline-flex;background:var(--color-light);border:1px solid var(--color-info-dark);color:var(--color-dark);padding:.55rem .7rem;border-radius:var(--border-radius-1)}
+      .mobile-menu{display:none;border-top:1px solid var(--color-info-light);padding:8px 0;background:var(--color-white)}
+      .mobile-menu a{display:block;padding:.7rem;border-radius:10px;color:var(--color-dark)}
+      .mobile-menu a:hover{background:var(--color-light)}
+      .cart span{font-size: 10px;}
+      .Sign-btn{width: 35px;height: 35px;}
+      #menubox span{width: 35px;height: 35px;display: flex;align-items: center;justify-content: center;}
+    }
+	.Access-links{cursor: pointer;}
+    .li-nav{list-style: none;}
+    .menu-title-gap{display: flex;align-items: center;justify-content: space-between;text-align: center;}
+    .close-btn{border-radius: 50%;padding: 4px;margin-top: 1rem;cursor: pointer;transition: all 300ms ease;}
+    .close-btn:hover{background-color: var(--color-light);}
+    
+  </style>
+</head>
+<body>
+  <!-- Header -->
+    <header class="sticky">
+      <div class="container">
+        <div class="top ">
+
+          <div class="logo">
+            <a class="brand" href="#" onclick="load('Home.html'); return false;"><i class='bx bxs-graduation'></i> <h3>CODE<span class="primary">LAB</span></h3> </a>
+        
+          </div>
+                    
+          <ul>
+  
+              <li><a href="#" onclick="load('Home.html'); return false;">Home</a></li>
+              <li><a href="#" onclick="load('Courses.html'); return false;">Courses</a></li>
+              <li><a href="#" onclick="load('Pricing.html'); return false;">Pricing</a></li>
+              <li><a href="#" onclick="load('AboutUs.html'); return false;">About</a></li>
+              <li><a href="#" onclick="load('ContactUs.html'); return false;">ContactUs</a></li>
+            
+          </ul>
+  
+
+
+          
+          <div class="header-right flex">
+            <img src="./img/mute.png" class="song"  id="music" alt="Toggle Sound">
+			
+			      <a href="payment.html" class="cart" id="cartBtn">
+   
+            <div class="cart" id="cartToggle">
+              <span class="material-symbols-outlined cart-icon" style="font-size: 25px;">shopping_cart</span>
+              <span class="cart-count" id="cartCount">0</span>
+            </div>             
+
+            </a>
+                <div class="flex Sign-btn btn2">
+                  <span class="material-symbols-outlined">person</span>
+                  <a href="combineHome.html" class="signin-txt">Sign In</a>
+                </div>
+                <div id="menubox">
+                  <span class="material-symbols-outlined menu-btn">menu</span>
+                </div>
+              
+              </div>
+      </div>
+
+
+      <!--=============Music Action Start=============-->
+      <audio id="mysong">
+        <source src="./img/audioo.mp3" type="audio/mp3" >
+      </audio>  
+      <!--=============Music Action close=============-->
+          
+    
+    </header>
+    
+    <!--Up Arrow-->
+    <div class="up-arrow-page">
+      <span class="up-arrow material-symbols-outlined">arrow_upward</span>
+    </div>
+ 
+  <!--menuForm from Header-->
+  <div class="menuForm">
+    <div class="menu-title-gap">
+      <p class="menu-title">QUICK ACCESS</p>
+      <span class="material-symbols-outlined close-btn" id="menu-close-btn">close_small</span>
+    </div>
+    <div class="Access-links">
+      <li class="h3 li-nav"><a href="#" onclick="load('Home.html'); return false;"><span class="material-symbols-outlined">home</span><h3 class="h3">Home</h3></a></li>
+      <li class="h3 li-nav"><a href="#" onclick="load('Courses.html'); return false;"><span class="material-symbols-outlined">book_ribbon</span><h3 class="h3">Courses</h3></a></li>
+      <li class="h3 li-nav"><a href="#" onclick="load('Pricing.html'); return false;"><span class="material-symbols-outlined">payment_card</span><h3 class="h3">Pricing</h3></a></li>
+      <li class="h3 li-nav"><a href="#" onclick="load('AboutUs.html'); return false;"><span class="material-symbols-outlined">info</span><h3 class="h3">AboutUs</h3></a></li>
+      <li class="h3 li-nav"><a href="#" onclick="load('ContactUs.html'); return false;"><span class="material-symbols-outlined">contact_mail</span><h3 class="h3">ContactUs</h3></a></li>
+    </div>
+    <div class="quick-menu">
+      <a href="#"><span class="material-symbols-outlined">account_circle</span><h3 class="h3">View profile</h3></a>
+      <a href="#"><span class="material-symbols-outlined">bookmark</span><h3 class="h3">Saved Courses</h3></a>
+      <a href="#"><span class="material-symbols-outlined">favorite</span><h3 class="h3">Favourites</h3></a>
+      <a href="#"><span class="material-symbols-outlined">mail</span><h3 class="h3">Messages</h3></a>
+      <a href="#"><span class="material-symbols-outlined">shopping_cart</span><h3 class="h3">My Cart</h3><h4 class="product_num h4">3</h4></a>
+      <a href="#"><span class="material-symbols-outlined">payment_card</span><h3 class="h3">Payment</h3></a>
+    </div>
+    <p class="menu-title">PREFERENCES</p>
+    <div class="prefer-menu">
+      <div class="toggle-item">
+        <a href="#"><span class="material-symbols-outlined">notifications</span><h3 class="h3">Notifications</h3></a>
+        <label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label>
+      </div>
+      <div class="toggle-item">
+        <a href="#"><span class="material-symbols-outlined">volume_up</span><h3 class="h3">Sound</h3></a>
+        <label class="toggle-switch"><input type="checkbox" id="soundToggle"><span class="slider"></span></label>
+      </div>
+      <div class="toggle-item">
+        <a href="#"><span class="material-symbols-outlined">nightlight</span><h3 class="h3">Dark Mode</h3></a>
+        <label class="toggle-switch" id="darkModeToggle"><input type="checkbox"><span class="slider"></span></label>
+      </div>
+    </div>
+    <div class="other-menu">
+      <a href="#"><span class="material-symbols-outlined">settings</span><h3 class="h3">Settings</h3></a>
+      <a href="#"><span class="material-symbols-outlined">help</span><h3 class="h3">Help & Feedback</h3></a>
+    </div>
+    <a href="#" class="logout-menu"><span class="material-symbols-outlined">logout</span><h3 class="h3">Logout</h3></a>
+  </div>
+
+  <!--menu Form close-->
+
+  <!--Sign In Form start-->
+<!-- Sign In Form -->
+  <form id="Signin" action="SigninServlet" method="post">
+    <div class="sign-title">
+      <div>
+        <h5 class="primary">WELCOME BACK</h5>
+        <img src="./img/data-science.png" class="pic-emoji">
+        <h4 class="primary">Sign In to Your Account</h4>
+        <p class="muted">Get access Exclusive member-only Offers & Deals</p>
+      </div>
+    </div>
+    <div class="sign-body">
+      <div class="email-txt">
+        <p class="primary">Email Address</p>
+        <div class="input-box">
+          <i class="fi fi-rr-envelope"></i>
+          <input type="text" placeholder="example@gmail.com" name="signin-email" autocomplete="off" class="input-with-icon" required>
+        </div>
+      </div>
+      <div class="pw-txt">
+        <p class="primary">Password</p>
+        <div class="input-box">
+          <i class="fi fi-rr-lock"></i>
+          <input type="password" placeholder="Password" autocomplete="off" class="input-with-icon" required>
+        </div>
+      </div>
+      <div class="flex-input">
+        <p>
+          <input type="checkbox" name="remember" id="remember" autofocus />
+          <label for="remember" class="remember">Remember me</label>
+        </p>
+        <a href="#" class="flex-input-a">Forgot your password?</a>
+      </div>
+      <div class="flexy">
+        <button type="submit" class="sign-btn">Sign In <i class="fi fi-rr-arrow-right arrow-right"></i></button>
+      </div>
+    </div>
+    <p class="reg-txt">Don't have an account? <a class="reg-txt-a pointer signuplink">Register and get started!</a></p>
+  </form>
+
+  <!-- Sign Up Form -->
+  <form id="Signup" action="SignupServlet" method="post">
+    <div class="sign-title">
+      <div>
+        <h5 class="primary">WELCOME!</h5>
+        <h4 class="primary">Create An Account</h4>
+        <p>Get access Exclusive member-only Offers & Deals</p>
+        <div class="margin10">
+          <div class="flex">
+            <div class="btn-icon"><a href="#" class="google-item"><i class="fi fi-brands-google google"></i></a></div>
+            <div class="btn-icon"><a href="#" class="facebook-item"><i class="fi fi-brands-facebook"></i></a></div>
+            <div class="btn-icon"><a href="#" class="linkedin-item"><i class="fab fa-linkedin-in"></i></a></div>
+            <div class="btn-icon"><a href="#" class="github-item"><i class="fi fi-brands-github"></i></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sign-body">
+      <div class="name-txt">
+        <p class="primary">Username</p>
+        <div class="input-box">
+          <i class="fi fi-rr-user"></i>
+          <input type="text" placeholder="Name" name="username" class="input-with-icon" autocomplete="off" required>
+        </div>
+      </div>
+      <div class="email-txt">
+        <p class="primary">Email Address</p>
+        <div class="input-box">
+          <i class="fi fi-rr-envelope"></i>
+          <input type="email" name="signup-email" placeholder="example@gmail.com" class="input-with-icon" autocomplete="off" required>
+        </div>
+      </div>
+      <div class="pw-txt">
+        <p class="primary">Password</p>
+        <div class="input-box">
+          <i class="fi fi-rr-lock"></i>
+          <input type="password" placeholder="Password" class="input-with-icon" autocomplete="off" required>
+        </div>
+      </div>
+      <div class="flex-input font-smaller">
+        <p class="color-darky">
+          <input type="checkbox" value="password"> I agree to the <a class="flex-agree">Terms of Service</a> and <a class="flex-agree">Privacy Policy</a>
+        </p>
+      </div>
+      <div class="flexy">
+        <button type="submit" class="sign-btn">Register <i class="fi fi-rr-arrow-right arrow-right"></i></button>
+      </div>
+    </div>
+    <p class="reg-txt">Already have an account? <a class="reg-txt-a pointer signinlink">Log in!</a></p>
+  </form>
+    <!--Sign Up Form close-->
+
+
+
+    <!-- Content shows here -->
+    <main class="page-content" id="content">
+      
+    </main>
+    <!-- Footer -->
+    <footer>
+        <div class="container foot">
+        <div>
+            <div class="brand"><i class='bx bxs-graduation'></i>CODELAB</div>
+            <p class="muted">Learn anywhere. Build a future you love.</p>
+        </div>
+        <div>
+            <h4>Quick Links</h4>
+            <a href="#">About Us</a>
+            <a href="#">Careers</a>
+            <a href="#">Blog</a>
+        </div>
+        <div>
+            <h4>Support</h4>
+            <a href="#">Help Center</a>
+            <a href="#">Contact</a>
+            <a href="#">Refund Policy</a>
+        </div>
+        <div>
+            <h4>Legal</h4>
+            <a href="#">Terms</a>
+            <a href="#">Privacy</a>
+            <a href="#">Cookies</a>
+        </div>
+        </div>
+        <div class="container" style="margin-top:16px;color:#7e8baa">© <span id="year"></span> CodeLab. All rights reserved.</div>
+    </footer>
+    <!--UpArrow Key for page-->
+    <script>
+      const upArrow = document.querySelector('.up-arrow-page');
+    
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 200) {
+          upArrow.classList.add('show');
+        } else {
+          upArrow.classList.remove('show');
+        }
+      });
+    
+      upArrow.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    </script>
+   
+  <!--Sign in , Sign Up Script-->
+  <script>
+        const SignInBtn = document.querySelector('.btn2');
+        const SignInForm = document.getElementById('Signin');
+        const SignUpForm = document.getElementById('Signup');
+        const signinlink = document.querySelector('.signinlink');
+        const signuplink = document.querySelector('.signuplink');
+        const pageContent = document.querySelector('.page-content') || document.body;
+    
+        if (SignInBtn) {
+            SignInBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (SignInForm.classList.contains('show')) {
+                    SignInForm.classList.remove('show');
+                    pageContent.style.filter = 'none';
+                } else {
+                    SignInForm.classList.add('show');
+                    SignUpForm.classList.remove('show');
+                    pageContent.style.filter = 'blur(8px)';
+                }
+            });
+        }
+    
+        if (signuplink) {
+            signuplink.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                SignUpForm.classList.add('show');
+                SignInForm.classList.remove('show');
+                pageContent.style.filter = 'blur(8px)';
+            });
+        }
+    
+        if (signinlink) {
+            signinlink.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                SignInForm.classList.add('show');
+                SignUpForm.classList.remove('show');
+                pageContent.style.filter = 'blur(8px)';
+            });
+        }
+    
+       
+    
+        document.addEventListener('click', function (event) {
+    if (SignInForm.classList.contains('show') &&
+        !SignInForm.contains(event.target) &&
+        event.target !== SignInBtn &&
+        !SignInBtn.contains(event.target)) {
+        SignInForm.classList.remove('show');
+        pageContent.style.filter = 'none';
+    }
+
+    if (SignUpForm.classList.contains('show') &&
+        !SignUpForm.contains(event.target) &&
+        event.target !== SignInBtn &&
+        !SignInBtn.contains(event.target)) {
+        SignUpForm.classList.remove('show');
+        pageContent.style.filter = 'none';
+    }
+});
+      
+  </script>
+  <!--sign in script end-->
+  <!--Menu script start-->
+  <script>
+      const menuForm = document.querySelector(".menuForm");
+      const menubox = document.getElementById("menubox");
+
+      if (menubox) {
+          menubox.addEventListener('click', function (event) {
+              event.preventDefault();
+              menuForm.classList.toggle('show');
+          });
+      } 
+      document.addEventListener('click', function (event) {
+      if (menuForm.classList.contains('show') &&
+          !menuForm.contains(event.target) &&
+          event.target !== menubox &&
+          !menubox.contains(event.target)) {
+          menuForm.classList.remove('show');
+      }
+  });
+  </script>
+    <!--Menu script end-->
+
+  <!--Music Script start-->
+  <script>
+      var mysong = document.getElementById("mysong");
+      var music = document.getElementById("music");
+      var toggle = document.getElementById("soundToggle");
+
+    
+      music.onclick = function () {
+          if (mysong.paused) {
+              mysong.play();
+              music.src = "./img/volume.png";
+              toggle.checked = true; 
+          } else {
+              mysong.pause();
+              music.src = "./img/mute.png";
+              toggle.checked = false;
+          }
+      };
+
+      toggle.addEventListener("change", function () {
+          if (toggle.checked) {
+              mysong.play().catch(() => {});
+              music.src = "./img/volume.png";
+          } else {
+              mysong.pause();
+              music.src = "./img/mute.png";
+          }
+      });
+  </script>
+ 
+
+<!-- cart -->
+  <!-- Dark Mode script start-->
+  <script>
+      const darkmode =  document.getElementById("darkModeToggle");
+      const body = document.body;
+      darkmode.addEventListener('change', () => {
+          if (darkmode.querySelector('input').checked) {
+              body.classList.add('dark-theme-variables');
+          } else {
+              body.classList.remove('dark-theme-variables');
+          }
+      });
+  </script>
+  
+  <!-- Dark Mode script end-->
+
+
+  <script>
+      function initFeatures() {
+          // Mobile nav toggle
+    const toggleBtn = document.querySelector('.mobile-toggle');
+    const mobileNav = document.getElementById('mobileNav');
+    if (toggleBtn && mobileNav){
+      toggleBtn.addEventListener('click', () => {
+        const open = mobileNav.style.display === 'block';
+        mobileNav.style.display = open ? 'none' : 'block';
+        toggleBtn.setAttribute('aria-expanded', String(!open));
+      });
+    }
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Filtering by chips
+    const chips = document.querySelectorAll('.chip');
+    const cards = document.querySelectorAll('#courseGrid .card');
+    chips.forEach(chip => chip.addEventListener('click', () => {
+      chips.forEach(c => c.dataset.active = 'false');
+      chip.dataset.active = 'true';
+      const f = chip.dataset.filter;
+      cards.forEach(card => {
+        const show = f === 'all' || card.dataset.tags.includes(f);
+        card.style.display = show ? 'block' : 'none';
+      });
+    }));
+    
+
+    // Search
+    const form = document.getElementById('courseSearch');
+    const input = document.getElementById('searchInput');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const q = input.value.toLowerCase().trim();
+      cards.forEach(card => {
+        const text = card.querySelector('.title').textContent.toLowerCase() + ' ' + card.dataset.tags;
+        card.style.display = text.includes(q) ? 'block' : 'none';
+      });
+    });
+    //Price change script
+    const priceToggle = document.querySelector('#priceToggleMode input');
+  const priceElement = document.getElementById('premiumPrice');
+  const periodElement = document.getElementById('billingPeriod');
+
+  if (priceToggle && priceElement && periodElement) {
+    priceToggle.addEventListener('change', function () {
+      if (this.checked) {
+        priceElement.textContent = '159';
+        periodElement.textContent = '/ year';
+      } else {
+        priceElement.textContent = '25';
+        periodElement.textContent = '/ month';
+      }
+    });
+  }
+
+
+}   
+  </script>
+ <script>
+  document.addEventListener('change', function (e) {
+  if (e.target.matches('#priceToggleMode input')) {
+    const price = document.getElementById('premiumPrice');
+    const period = document.getElementById('billingPeriod');
+    if (price && period) {
+      price.textContent = e.target.checked ? '159' : '25';
+      period.textContent = e.target.checked ? '/ year' : '/ month';
+    }
+  }
+});
+ </script>
+  <script src="./responsive.js"></script>
+    <!-- Content change script -->
+    <script>
+      function load(page) {
+        fetch(page)
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById("content").innerHTML = data;
+            initFeatures();
+          });
+      }
+  
+      // Load home by default
+      load('Home.html');
+    </script>
+<script>
+  // Load cart from localStorage (so it stays across pages)
+  let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+  localStorage.setItem("cart", JSON.stringify(cart));
+  const cartCount = document.getElementById("cartCount");
+
+  // Function to update cart count
+  function updateCartCount() {
+    if (cartCount) {
+      cartCount.textContent = cart.length;
+      cartCount.classList.add("bump");
+      setTimeout(() => cartCount.classList.remove("bump"), 300);
+    }
+  }
+
+  // Run once on page load
+  updateCartCount();
+
+  // Listen for clicks on add-to-cart buttons (inside Home.html cards)
+  document.addEventListener("click", function(e) {
+    if (e.target.classList.contains("add-to-cart")) {
+      e.preventDefault();
+
+      // Get data from button
+      const title = e.target.getAttribute("data-title");
+      const price = e.target.getAttribute("data-price");
+
+      // Save item in cart
+      cart.push({ title, price });
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      // Update UI
+      updateCartCount();
+    }
+  });
+
+  // Ensure cart button always goes to payment.html
+  const cartBtn = document.getElementById("cartBtn");
+  if (cartBtn) {
+    cartBtn.addEventListener("click", () => {
+      window.location.href = "payment.html";
+    });
+  }
+</script>
+
+</body>
+</html>
+
+
